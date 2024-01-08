@@ -14,7 +14,7 @@ from models.user import User
 def add_get_places(city_id):
     """
     Retrieves the list of all Place objects linked to a City object or
-    Creates a new City object linked to a State object
+    Creates a new Place object linked to a City object
     depending on the request method.
     """
     city = storage.get(City, city_id)
