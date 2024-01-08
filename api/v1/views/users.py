@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""This script contains an app view for Amenity objects"""
+"""This script contains an app view for User objects"""
 from flask import abort, jsonify, request
 from api.v1.views import app_views
 from models import storage

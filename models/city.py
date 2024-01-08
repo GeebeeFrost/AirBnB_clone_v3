@@ -2,6 +2,7 @@
 """ holds class City"""
 import models
 from models.base_model import BaseModel, Base
+from models.place import Place
 from os import getenv
 import sqlalchemy
 from sqlalchemy import Column, String, ForeignKey
@@ -22,3 +23,12 @@ class City(BaseModel, Base):
     def __init__(self, *args, **kwargs):
         """initializes city"""
         super().__init__(*args, **kwargs)
+
+    if models.storage_t != 'db':
+        @property
+        def places(self):
+            """Returns list of Place instances linked to the City"""
+            all_places = models.storage.all(Place).values()
+            city_places = [place for place in all_places
+                           if place.city_id == self.id]
+            return city_places
